@@ -22,6 +22,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="localhost.filmesassistidos.activity.TelaCadastro"
+            android:label="@string/title_activity_tela_cadastro" >
+        </activity>
+        <activity
+            android:name="localhost.filmesassistidos.activity.TelaBusca"
+            android:label="@string/title_activity_tela_busca" >
+        </activity>
+        <activity
+            android:name="localhost.filmesassistidos.activity.TelaListagem"
+            android:label="@string/title_activity_tela_listagem" >
+        </activity>
+        <activity
+            android:name="localhost.filmesassistidos.activity.TelaEdicao"
+            android:label="@string/title_activity_tela_edicao" >
+        </activity>
+        <activity
+            android:name="localhost.filmesassistidos.activity.TelaInformacoes"
+            android:label="@string/title_activity_tela_informacoes" >
+        </activity>
     </application>
 
 </manifest>

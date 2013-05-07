@@ -4,11 +4,11 @@ import localhost.filmesassistidos.R;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class TelaOpcoes extends Activity {
+public class TelaBusca extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_tela_opcoes);
+		setContentView(R.layout.activity_tela_busca);
 	}
 }

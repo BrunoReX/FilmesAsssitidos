@@ -2,5 +2,11 @@
 <resources>
 
     <string name="app_name">Filmes Assistidos</string>
+    <string name="title_activity_tela_cadastro">Adicionar filme</string>
+    <string name="title_activity_tela_busca">Buscar filme</string>
+    <string name="title_activity_tela_listagem">Listar filmes</string>
+    <string name="title_activity_tela_edicao">Editar filme</string>
+    <string name="title_activity_tela_informacoes">Informações</string>
+    <string name="str_nome">Nome:</string>
 
 </resources>
