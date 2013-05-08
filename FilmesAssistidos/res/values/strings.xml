@@ -7,6 +7,10 @@
     <string name="title_activity_tela_listagem">Listar filmes</string>
     <string name="title_activity_tela_edicao">Editar filme</string>
     <string name="title_activity_tela_informacoes">Informações</string>
+	<string name="str_sair">Sair</string>
+    <string name="str_sim">Sim</string>
+    <string name="str_nao">Não</string>
+    <string name="msg_sair">Deseja mesmo sair?</string>
     <string name="str_nome">Nome:</string>
-
+    
 </resources>
