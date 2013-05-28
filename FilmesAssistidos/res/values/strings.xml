@@ -332,6 +332,7 @@
     <string-array name="str_array_listar">
         <item>Filmes não assistidos</item>
         <item>Filmes assistidos</item>
+		<item>Todos os filmes</item>
     </string-array>
 
 </resources>

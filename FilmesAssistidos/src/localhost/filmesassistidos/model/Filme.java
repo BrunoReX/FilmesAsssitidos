@@ -2,7 +2,8 @@ package localhost.filmesassistidos.model;
 
 public class Filme {
 	private Integer codigoFilme;
-	private Integer anoFilme;
+	private String nomeFilme;
+	private String anoFilme;
 	private String nomeDiretor;
 	private Integer codigoGenero;
 	private Integer codigoNacionalidade;
@@ -16,11 +17,19 @@ public class Filme {
 		this.codigoFilme = codigoFilme;
 	}
 
-	public Integer getAnoFilme() {
+	public String getNomeFilme() {
+		return nomeFilme;
+	}
+
+	public void setNomeFilme(String nomeFilme) {
+		this.nomeFilme = nomeFilme;
+	}
+
+	public String getAnoFilme() {
 		return anoFilme;
 	}
 
-	public void setAnoFilme(Integer anoFilme) {
+	public void setAnoFilme(String anoFilme) {
 		this.anoFilme = anoFilme;
 	}
 

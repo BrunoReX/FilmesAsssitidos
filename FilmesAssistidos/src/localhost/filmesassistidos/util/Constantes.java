@@ -16,4 +16,5 @@ public class Constantes {
 	
 	public static final int LISTAR_NAO = 0;
 	public static final int LISTAR_SIM = 1;
+	public static final int LISTAR_TODOS = 2;
 }
