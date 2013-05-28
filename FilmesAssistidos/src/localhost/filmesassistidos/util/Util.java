@@ -74,4 +74,10 @@ public class Util {
 		context.startActivity(it);
 		((Activity) context).finish();
 	}
+	
+	public void voltar(Class classe) {
+		Intent it = new Intent(context, classe);
+		context.startActivity(it);
+		((Activity) context).finish();
+	}
 }
