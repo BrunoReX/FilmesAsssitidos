@@ -22,6 +22,7 @@
     <string name="str_buscar_por">Buscar por</string>
     <string name="str_termo_busca">Termo de busca</string>
     <string name="str_buscar">Buscar</string>
+    <string name="str_mostrar">Mostrar</string>
 
     <string-array name="str_array_opcoes">
         <item>Adicionar filme</item>
@@ -320,6 +321,10 @@
         <item>Nome</item>
         <item>Ano</item>
         <item>Diretor</item>
+    </string-array>
+    <string-array name="str_array_listar">
+        <item>Filmes não assistidos</item>
+        <item>Filmes assistidos</item>
     </string-array>
 
 </resources>
