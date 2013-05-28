@@ -99,7 +99,7 @@
                     android:id="@+id/spnNacionalidadeCad"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:entries="@array/str_array_generos" />
+                    android:entries="@array/str_array_paises" />
             </TableRow>
 
             <TableRow
