@@ -1,9 +1,12 @@
 package localhost.filmesassistidos.util;
 
 import localhost.filmesassistidos.R;
+import localhost.filmesassistidos.activity.TelaOpcoes;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.widget.Toast;
 
 public class Util {
@@ -64,5 +67,11 @@ public class Util {
 	
 	public String obterString(int id) {
 		return context.getString(id);
+	}
+	
+	public void voltar() {
+		Intent it = new Intent(context, TelaOpcoes.class);
+		context.startActivity(it);
+		((Activity) context).finish();
 	}
 }

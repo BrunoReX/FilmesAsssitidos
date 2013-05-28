@@ -19,6 +19,9 @@
     <string name="str_assitido">Assistido</string>
     <string name="str_adicionar">Adicionar</string>
     <string name="str_voltar">Voltar</string>
+    <string name="str_buscar_por">Buscar por</string>
+    <string name="str_termo_busca">Termo de busca</string>
+    <string name="str_buscar">Buscar</string>
 
     <string-array name="str_array_opcoes">
         <item>Adicionar filme</item>
@@ -312,6 +315,11 @@
         <item>West Bank</item>
         <item>Zâmbia</item>
         <item>Zimbabué</item>
+    </string-array>
+    <string-array name="str_array_busca">
+        <item>Nome</item>
+        <item>Ano</item>
+        <item>Diretor</item>
     </string-array>
 
 </resources>

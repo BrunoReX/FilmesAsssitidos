@@ -9,4 +9,9 @@ public class Constantes {
 	public static final int MENU_LISTAR = 2;
 	public static final int MENU_INFORMACOES = 3;
 	public static final int MENU_SAIR = 4;
+	
+	public static final int BUSCA_NOME = 0;
+	public static final int BUSCA_ANO = 1;
+	public static final int BUSCA_DIRETOR = 2;
+	
 }
