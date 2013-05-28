@@ -23,6 +23,11 @@
     <string name="str_termo_busca">Termo de busca</string>
     <string name="str_buscar">Buscar</string>
     <string name="str_mostrar">Mostrar</string>
+    
+    <string name="str_total_filmes">Total de filmes:</string>
+    <string name="str_total_assistido">Total assistido:</string>
+    <string name="str_total_nao_assistido">Total não assistido:</string>
+    
 
     <string-array name="str_array_opcoes">
         <item>Adicionar filme</item>
