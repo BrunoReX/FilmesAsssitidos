@@ -9,8 +9,17 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class FilmeDAO {
+	private static FilmeDAO filmeDAO;
 	private FilmeHelper filmeHelper;
 	private SQLiteDatabase banco;
+	
+	public static FilmeDAO obterInstancia(Context context) {
+		if (filmeDAO == null) {
+			filmeDAO = new FilmeDAO(context);
+		}
+		
+		return filmeDAO;
+	}
 	
 	public FilmeDAO(Context context) {
 		filmeHelper = new FilmeHelper(context);
@@ -25,7 +34,11 @@ public class FilmeDAO {
 		sql.append("SELECT ");
 		
 		for (int i = 0; i < colunas.length; i++) {
-			sql.append(colunas[i]);
+			if (i == 0) {
+				sql.append(colunas[i] + " as _id");
+			} else {
+				sql.append(colunas[i]);
+			}
 			
 			if (i < (colunas.length-1)) {
 				sql.append(", ");
@@ -59,17 +72,28 @@ public class FilmeDAO {
 		return cursor;		
 	}
 	
+	public int obterTotal(int filtro) {
+		Cursor cursor = listarFilmes(filtro);
+		int total = 0;
+		
+		if (cursor != null) {
+			total = cursor.getCount();
+		}		
+		
+		cursor.close();		
+		return total;
+	}
+	
 	public long novoRegistro(Filme f) {
 		String[] colunas = filmeHelper.obterColunasTabela();
 		
 		ContentValues valores = new ContentValues();
-		valores.put(colunas[0], f.getCodigoFilme());
 		valores.put(colunas[1], f.getNomeFilme());
 		valores.put(colunas[2], f.getAnoFilme());
 		valores.put(colunas[3], f.getNomeDiretor());
 		valores.put(colunas[4], f.getCodigoGenero());
 		valores.put(colunas[5], f.getCodigoNacionalidade());
-		valores.put(colunas[6], f.isFilmeAssistido());
+		valores.put(colunas[6], !f.isFilmeAssistido() ? 1 : 0);
 
 		return banco.insert(filmeHelper.obterNomeTabela(), null, valores);
 	}

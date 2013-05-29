@@ -7,6 +7,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 public class Util {
@@ -79,5 +81,17 @@ public class Util {
 		Intent it = new Intent(context, classe);
 		context.startActivity(it);
 		((Activity) context).finish();
+	}
+	
+	public SimpleCursorAdapter criarCursorAdapter(String[] coluna, Cursor cursor) {
+		SimpleCursorAdapter cursorAdapter = new SimpleCursorAdapter(
+				context,
+				android.R.layout.simple_list_item_1,
+				cursor,
+				coluna,
+				new int[] { android.R.id.text1 }, // id padrão definido no simple_list_item_1
+				0);
+		
+		return cursorAdapter;
 	}
 }

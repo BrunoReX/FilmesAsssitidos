@@ -25,6 +25,8 @@
     <string name="str_mostrar">Mostrar</string>
     <string name="str_gravar">Gravar</string>
     <string name="str_excluir">Excluir</string>
+    <string name="msg_filme_cadastrado">Filme cadastrado com sucesso</string>
+    
     
     <string name="str_total_filmes">Total de filmes:</string>
     <string name="str_total_assistido">Total assistido:</string>
