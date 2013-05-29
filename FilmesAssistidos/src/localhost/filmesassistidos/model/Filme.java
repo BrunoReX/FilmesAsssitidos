@@ -7,7 +7,7 @@ public class Filme {
 	private String nomeDiretor;
 	private Integer codigoGenero;
 	private Integer codigoNacionalidade;
-	private boolean filmeAssistido;
+	private Integer filmeAssistido;
 
 	public Integer getCodigoFilme() {
 		return codigoFilme;
@@ -57,11 +57,11 @@ public class Filme {
 		this.codigoNacionalidade = codigoNacionalidade;
 	}
 
-	public boolean isFilmeAssistido() {
+	public Integer getFilmeAssistido() {
 		return filmeAssistido;
 	}
 
-	public void setFilmeAssistido(boolean filmeAssistido) {
+	public void setFilmeAssistido(Integer filmeAssistido) {
 		this.filmeAssistido = filmeAssistido;
 	}
 }

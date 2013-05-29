@@ -3,6 +3,7 @@ package localhost.filmesassistidos.activity;
 import localhost.filmesassistidos.R;
 import localhost.filmesassistidos.dao.FilmeDAO;
 import localhost.filmesassistidos.model.Filme;
+import localhost.filmesassistidos.util.Constantes;
 import localhost.filmesassistidos.util.Util;
 import android.app.Activity;
 import android.os.Bundle;
@@ -22,7 +23,6 @@ public class TelaCadastro extends Activity {
 	private EditText edtDiretor;
 	private Spinner spnGenero;
 	private Spinner spnNacionalidade;
-	private RadioButton rbSim;
 	private RadioButton rbNao;
 	private Button btnAdicionar;
 	private Button btnVoltar;
@@ -42,7 +42,6 @@ public class TelaCadastro extends Activity {
 		spnGenero.setSelection(0);
 		spnNacionalidade = (Spinner) findViewById(R.id.spnNacionalidadeCad);
 		spnNacionalidade.setSelection(0);
-		rbSim = (RadioButton) findViewById(R.id.rbSimCad);
 		rbNao = (RadioButton) findViewById(R.id.rbNaoCad);
 		btnAdicionar = (Button) findViewById(R.id.btnAdicionarCad);
 		btnVoltar = (Button) findViewById(R.id.btnVoltarCad);
@@ -65,10 +64,14 @@ public class TelaCadastro extends Activity {
 				f.setCodigoGenero(spnGenero.getSelectedItemPosition());
 				f.setCodigoNacionalidade(spnNacionalidade.getSelectedItemPosition());
 				
-				if (rbNao.isSelected()) {
-					f.setFilmeAssistido(false);
+				if (rbNao.isChecked()) {
+					f.setFilmeAssistido(Constantes.FILME_NAO);
 				} else {
-					f.setFilmeAssistido(true);
+					f.setFilmeAssistido(Constantes.FILME_SIM);
+				}
+				
+				if (!util.validarCampos(f)) {
+					return;
 				}
 				
 				filmeDAO.novoRegistro(f);

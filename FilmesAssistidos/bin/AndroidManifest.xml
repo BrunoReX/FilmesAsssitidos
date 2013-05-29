@@ -24,11 +24,13 @@
         </activity>
         <activity
             android:name="localhost.filmesassistidos.activity.TelaCadastro"
-            android:label="@string/title_activity_tela_cadastro" >
+            android:label="@string/title_activity_tela_cadastro"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
             android:name="localhost.filmesassistidos.activity.TelaBusca"
-            android:label="@string/title_activity_tela_busca" >
+            android:label="@string/title_activity_tela_busca"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
             android:name="localhost.filmesassistidos.activity.TelaListagem"
@@ -36,7 +38,8 @@
         </activity>
         <activity
             android:name="localhost.filmesassistidos.activity.TelaEdicao"
-            android:label="@string/title_activity_tela_edicao" >
+            android:label="@string/title_activity_tela_edicao"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
             android:name="localhost.filmesassistidos.activity.TelaInformacoes"

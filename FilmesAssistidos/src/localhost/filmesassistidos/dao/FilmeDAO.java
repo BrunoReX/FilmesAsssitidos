@@ -72,6 +72,52 @@ public class FilmeDAO {
 		return cursor;		
 	}
 	
+	public Cursor buscarFilmes(int filtro, String termo) {
+		String[] colunas = filmeHelper.obterColunasTabela();
+		Cursor cursor = null;
+		
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT ");
+		
+		for (int i = 0; i < colunas.length; i++) {
+			if (i == 0) {
+				sql.append(colunas[i] + " as _id");
+			} else {
+				sql.append(colunas[i]);
+			}
+			
+			if (i < (colunas.length-1)) {
+				sql.append(", ");
+			} else {
+				sql.append(" ");
+			}
+		}
+		
+		sql.append("FROM " + filmeHelper.obterNomeTabela()  + " ");
+
+		switch (filtro) {
+		case Constantes.BUSCA_NOME:
+			sql.append("WHERE FIL_NOME LIKE '%" + termo + "%' ");			
+			sql.append("ORDER BY FIL_NOME;");
+			break;
+			
+		case Constantes.BUSCA_DIRETOR:
+			sql.append("WHERE FIL_DIR LIKE '%" + termo + "%'" );
+			sql.append("ORDER BY FIL_DIR;");
+			break;
+			
+		case Constantes.LISTAR_TODOS:
+			break;
+
+		default:
+			break;
+		}
+		
+		cursor = banco.rawQuery(sql.toString(), null);
+		
+		return cursor;		
+	}
+	
 	public int obterTotal(int filtro) {
 		Cursor cursor = listarFilmes(filtro);
 		int total = 0;
@@ -93,7 +139,7 @@ public class FilmeDAO {
 		valores.put(colunas[3], f.getNomeDiretor());
 		valores.put(colunas[4], f.getCodigoGenero());
 		valores.put(colunas[5], f.getCodigoNacionalidade());
-		valores.put(colunas[6], !f.isFilmeAssistido() ? 1 : 0);
+		valores.put(colunas[6], f.getFilmeAssistido());
 
 		return banco.insert(filmeHelper.obterNomeTabela(), null, valores);
 	}
@@ -107,7 +153,7 @@ public class FilmeDAO {
 		valores.put(colunas[3], f.getNomeDiretor());
 		valores.put(colunas[4], f.getCodigoGenero());
 		valores.put(colunas[5], f.getCodigoNacionalidade());
-		valores.put(colunas[6], f.isFilmeAssistido());
+		valores.put(colunas[6], f.getFilmeAssistido());
 		
 		String registro = colunas[0] + "=" + f.getCodigoFilme();
 		
@@ -122,5 +168,35 @@ public class FilmeDAO {
 		sql.append("WHERE " + colunas[0] + "=" + f.getCodigoFilme() + ";");
 		
 		banco.execSQL(sql.toString());
+	}
+	
+	public Filme obterDados(int codigo) {
+		Filme f = new Filme();
+		StringBuilder sql = new StringBuilder();
+		
+		sql.append("SELECT FIL_ID, FIL_NOME, FIL_ANO, FIL_DIR, ");
+		sql.append("FIL_GEN, FIL_NACIONALIDADE, FIL_ASSISTIDO ");
+		sql.append("FROM " + filmeHelper.obterNomeTabela() + " ");
+		sql.append("WHERE FIL_ID=" + codigo + " ");
+		sql.append("LIMIT 1;");
+		
+		Cursor cur = banco.rawQuery(sql.toString(), null);
+		
+		if (cur != null) {
+			cur.moveToFirst();
+			
+			if (cur.getCount() != 0) {
+				f.setCodigoFilme(cur.getInt(cur.getColumnIndex("FIL_ID")));
+				f.setNomeFilme(cur.getString(cur.getColumnIndex("FIL_NOME")));
+				f.setAnoFilme(cur.getString(cur.getColumnIndex("FIL_ANO")));
+				f.setNomeDiretor(cur.getString(cur.getColumnIndex("FIL_DIR")));
+				f.setCodigoGenero(cur.getInt(cur.getColumnIndex("FIL_GEN")));
+				f.setCodigoNacionalidade(cur.getInt(cur.getColumnIndex("FIL_NACIONALIDADE")));
+				f.setFilmeAssistido(cur.getInt(cur.getColumnIndex("FIL_ASSISTIDO")));
+			}
+		}
+		
+		cur.close();
+		return f;
 	}
 }

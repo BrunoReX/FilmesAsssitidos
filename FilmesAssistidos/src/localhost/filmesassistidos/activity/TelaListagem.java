@@ -18,8 +18,9 @@ import android.widget.Spinner;
 
 public class TelaListagem extends Activity {
 	// Qual coluna mostrar no ListView
-	String[] coluna = new String[] { "FIL_NOME" };
-	SimpleCursorAdapter cursorAdapter;
+	private String[] coluna = new String[] { "FIL_NOME" };
+	
+	private SimpleCursorAdapter cursorAdapter;
 	
 	private Util util;
 	private FilmeDAO filmeDAO;
@@ -39,11 +40,13 @@ public class TelaListagem extends Activity {
 		cursor = filmeDAO.listarFilmes(Constantes.LISTAR_NAO);
 		
 		spnListar = (Spinner) findViewById(R.id.spnListar);
+		spnListar.setSelection(0);
 		lviFilmes = (ListView) findViewById(R.id.lviFilmes);
 		btnVoltar = (Button) findViewById(R.id.btnVoltarLis);
 		
 		cursorAdapter = util.criarCursorAdapter(coluna, cursor);
 		
+		util.listaViewEditarItem(cursor, lviFilmes, String.valueOf(Constantes.EDITAR_LISTAR));
 		lviFilmes.setAdapter(cursorAdapter);
 		
 		btnVoltar.setOnClickListener(new OnClickListener() {
@@ -61,11 +64,11 @@ public class TelaListagem extends Activity {
 				cursor = filmeDAO.listarFilmes(index);
 				cursorAdapter = util.criarCursorAdapter(coluna, cursor);
 				lviFilmes.setAdapter(cursorAdapter);
+				util.listaViewEditarItem(cursor, lviFilmes, String.valueOf(Constantes.EDITAR_LISTAR));
 			}
 
 			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
-			}
+			public void onNothingSelected(AdapterView<?> arg0) {}
 		});
 	}
 }
