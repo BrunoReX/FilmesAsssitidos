@@ -98,20 +98,17 @@ public class FilmeDAO {
 		switch (filtro) {
 		case Constantes.BUSCA_NOME:
 			sql.append("WHERE FIL_NOME LIKE '%" + termo + "%' ");			
-			sql.append("ORDER BY FIL_NOME;");
 			break;
 			
 		case Constantes.BUSCA_DIRETOR:
 			sql.append("WHERE FIL_DIR LIKE '%" + termo + "%'" );
-			sql.append("ORDER BY FIL_DIR;");
 			break;
 			
-		case Constantes.LISTAR_TODOS:
-			break;
-
 		default:
 			break;
 		}
+		
+		sql.append("ORDER BY FIL_NOME;");
 		
 		cursor = banco.rawQuery(sql.toString(), null);
 		
@@ -172,11 +169,26 @@ public class FilmeDAO {
 	
 	public Filme obterDados(int codigo) {
 		Filme f = new Filme();
+		String[] colunas = filmeHelper.obterColunasTabela();
 		StringBuilder sql = new StringBuilder();
 		
-		sql.append("SELECT FIL_ID, FIL_NOME, FIL_ANO, FIL_DIR, ");
-		sql.append("FIL_GEN, FIL_NACIONALIDADE, FIL_ASSISTIDO ");
-		sql.append("FROM " + filmeHelper.obterNomeTabela() + " ");
+		sql.append("SELECT ");
+		
+		for (int i = 0; i < colunas.length; i++) {
+			if (i == 0) {
+				sql.append(colunas[i]);
+			} else {
+				sql.append(colunas[i]);
+			}
+			
+			if (i < (colunas.length-1)) {
+				sql.append(", ");
+			} else {
+				sql.append(" ");
+			}
+		}
+		
+		sql.append("FROM " + filmeHelper.obterNomeTabela()  + " ");
 		sql.append("WHERE FIL_ID=" + codigo + " ");
 		sql.append("LIMIT 1;");
 		

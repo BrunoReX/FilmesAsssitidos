@@ -75,8 +75,19 @@ public class TelaCadastro extends Activity {
 				}
 				
 				filmeDAO.novoRegistro(f);
+				limparCampos();
 				util.mostrarMensagem(getResources().getString(R.string.msg_filme_cadastrado));
 			}
 		});
+	}
+	
+	public void limparCampos() {
+		edtNome.setText("");
+		edtAno.setText("");
+		edtDiretor.setText("");
+		spnGenero.setSelection(0);
+		spnNacionalidade.setSelection(0);
+		rbNao.setChecked(true);
+		edtNome.requestFocus();
 	}
 }
